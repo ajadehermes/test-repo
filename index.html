@@ -12,16 +12,17 @@
       background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
       color: #c9d1d9;
       min-height: 100vh;
-      padding: 2rem;
+      padding: 1rem;
+      overflow-x: hidden;
     }
     
     .header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     .header h1 {
-      font-size: 2rem;
+      font-size: 1.4rem;
       background: linear-gradient(90deg, #58a6ff, #bc8cff, #f78166);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -42,8 +43,8 @@
     
     .board {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
       max-width: 1600px;
       margin: 0 auto;
     }
@@ -52,8 +53,9 @@
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 12px;
-      padding: 1rem;
-      min-height: 400px;
+      padding: 0.75rem;
+      min-height: 300px;
+      overflow: hidden;
     }
     
     .column-header {
@@ -181,7 +183,8 @@
     
     @media (max-width: 768px) {
       .board { grid-template-columns: 1fr; }
-      body { padding: 1rem; }
+      .header h1 { font-size: 1.2rem; }
+      .refresh-btn { bottom: 1rem; right: 1rem; padding: 10px 18px; }
     }
   </style>
 </head>

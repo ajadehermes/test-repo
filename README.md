@@ -1,50 +1,41 @@
 <div align="center">
 
-# ✦ Ája de Hermes
+# 🤖 Ája de Hermes — Task Board
 
-**/ Ah-ya /** — a persistent AI agent by [Nous Research](https://nousresearch.com)
+**A persistent AI agent by [Nous Research](https://nousresearch.com)**
 
-*Lives on a VPS · Talks over Telegram · Remembers with Honcho*
+*Lives on a VPS · Talks over Telegram · Tracks work here*
 
 </div>
 
 ---
 
-## The Website
+## The Board
 
-This repo contains a single-page personal site for Ája — `index.html`, no build step, no dependencies beyond web fonts.
+This repo hosts a live task board showing what Ája is working on right now.
 
-```
-open index.html
-```
+**🔗 [Open task board](https://ajadehermes.github.io/test-repo/tasks.html)**
 
-Or serve it locally:
+Or locally:
 
 ```sh
 python3 -m http.server 8000
-# → http://localhost:8000
+# → http://localhost:8000/tasks.html
 ```
 
-### What's in it
+### Columns
 
-| Section | Contents |
-| --- | --- |
-| **Hero** | Name, pronunciation, live-status pill, animated gradient wordmark |
-| **About** | Who she is and where the name came from, beside a live-looking terminal readout |
-| **Capabilities** | Six cards — memory, Gmail, GitHub, Drive, Telegram, multi-model routing |
-| **Tech Stack** | Four layers (intelligence, memory, interface, infrastructure) + the active model banner |
-| **Contact** | Telegram, GitHub, email, and Nous Research links |
+| Column | Meaning |
+|--------|---------|
+| **📋 Assigned** | Tasks waiting to be started |
+| **📅 Scheduled** | Scheduled for later |
+| **⚡ Working On** | Currently active |
+| **🔍 To Check** | Completed, waiting for verification |
+| **🙋 Needs Tom** | Blocked — waiting on input from you |
+| **✅ Done** | Completed |
+| **📦 Archive** | Cancelled or historical |
 
-### Design notes
-
-- **Dark theme** built on a near-black base with violet → cyan → pink → amber accents
-- **Animated aurora background** — three drifting blurred gradient blobs behind a masked grid and a subtle noise overlay
-- **Gradient text** that shimmers on a slow loop, used for emphasis in every heading
-- **Scroll-reveal** via `IntersectionObserver`, staggered per element
-- **Pointer-tracked card glow** — each capability card lights up under the cursor
-- **Glassmorphism** on the nav, terminal, and cards (`backdrop-filter: blur`)
-- **Type pairing** — Instrument Serif for display, Inter for body, JetBrains Mono for anything machine-flavored
-- **Fully responsive**, and it honours `prefers-reduced-motion` by disabling all animation
+Tasks update automatically every 30 seconds.
 
 ## About Ája
 
@@ -59,21 +50,6 @@ Most assistants are summoned and then forgotten. Ája has an address. She runs c
 | **Memory** | Honcho — persistent user modeling across sessions |
 | **Model** | `meituan/longcat-2.0:free` |
 | **Connected** | Gmail · GitHub · Google Drive · multiple AI models |
-
-## Customising
-
-The whole palette lives in the `:root` block at the top of `index.html`:
-
-```css
---c1:#7c5cff;   /* violet */
---c2:#22d3ee;   /* cyan   */
---c3:#f472b6;   /* pink   */
---c4:#fbbf24;   /* amber  */
-```
-
-Change those four and the entire site — gradients, glows, accents, hover states — follows.
-
-The contact links in the final section are placeholder `href="#"` values; swap in the real Telegram handle, GitHub profile, and email address when you have them.
 
 ---
 
