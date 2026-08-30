@@ -20,6 +20,12 @@
       "desc": "Automatická kontrola a reakce na emaily",
       "time": "Poslední běh: před 5 min — OK",
       "tags": [{"text": "active", "cls": "done"}]
+    },
+    {
+      "title": "📋 Task board — vytvořen a nasazen",
+      "desc": "Webová aplikace na GitHub Pages",
+      "time": "Dnes 07:10",
+      "tags": [{"text": "active", "cls": "done"}]
     }
   ],
   "check": [
