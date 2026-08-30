@@ -1,0 +1,78 @@
+{
+  "assigned": [
+    {
+      "title": "📧 Email triáž — reagovat na nové emaily",
+      "desc": "Kontrola každých 5 min, přijímání GitHub pozvánek, odpovídání na důležité zprávy",
+      "time": "8-22h, každých 5 min",
+      "tags": [{"text": "automat", "cls": "done"}]
+    },
+    {
+      "title": "🌐 Vysílejto.cz — dokončit web",
+      "desc": "Úpravy podle pokynů v emailu, čekám na spuštění GitHub Pages",
+      "time": "Branch: david-zmeny-2908-v2",
+      "tags": [{"text": "GitHub Pages", "cls": "waiting"}]
+    }
+  ],
+  "scheduled": [],
+  "working": [
+    {
+      "title": "📧 Email triáž",
+      "desc": "Automatická kontrola a reakce na emaily",
+      "time": "Poslední běh: před 5 min — OK",
+      "tags": [{"text": "active", "cls": "done"}]
+    }
+  ],
+  "check": [
+    {
+      "title": "📧 Systémové emaily — zkontrolováno",
+      "desc": "4 emaily: GitHub PAT, 2FA, Google sdílení, bezpečnost — vše OK",
+      "time": "Před 15 min",
+      "tags": [{"text": "done", "cls": "done"}]
+    }
+  ],
+  "needs-tom": [
+    {
+      "title": "🏷️ Loga SPORT ALIVE, SUBTERRA, ČESKÝ FLORBAL",
+      "desc": "Nové verze log — čekám na soubory",
+      "tags": [{"text": "loga", "cls": "waiting"}]
+    },
+    {
+      "title": "📸 Vysílejto.cz — fotky z Google Drive",
+      "desc": "Davidovi fotky — čekám na přístup",
+      "tags": [{"text": "fotky", "cls": "waiting"}]
+    }
+  ],
+  "done": [
+    {
+      "title": "🤖 Ája web — vytvořen",
+      "desc": "Osobní web vytvořen a nasazen na GitHub Pages",
+      "time": "Včera 22:00",
+      "tags": [{"text": "done", "cls": "done"}]
+    },
+    {
+      "title": "🔐 Claude Code — Pro subscription",
+      "desc": "Připojení k tvé Pro subscription",
+      "time": "Včera 21:00",
+      "tags": [{"text": "done", "cls": "done"}]
+    },
+    {
+      "title": "📧 Email triáž — nastavena",
+      "desc": "Cron job nastaven na 8-22h, co 5 min",
+      "time": "Včera 20:30",
+      "tags": [{"text": "done", "cls": "done"}]
+    },
+    {
+      "title": "🌐 Vysílejto.cz — úpravy dokončeny",
+      "desc": "Všechny změny provedeny, push na branch, čeká na Pages",
+      "time": "Dnes 21:30",
+      "tags": [{"text": "done", "cls": "done"}]
+    }
+  ],
+  "archive": [
+    {
+      "title": "☀️ Ranní briefing — zrušen",
+      "desc": "Zrušeno na tvé přání",
+      "tags": [{"text": "cancelled"}]
+    }
+  ]
+}
