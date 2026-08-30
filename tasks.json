@@ -5,12 +5,6 @@
       "desc": "Kontrola každých 5 min, přijímání GitHub pozvánek, odpovídání na důležité zprávy",
       "time": "8-22h, každých 5 min",
       "tags": [{"text": "automat", "cls": "done"}]
-    },
-    {
-      "title": "🌐 Vysílejto.cz — dokončit web",
-      "desc": "Úpravy podle pokynů v emailu, čekám na spuštění GitHub Pages",
-      "time": "Branch: david-zmeny-2908-v2",
-      "tags": [{"text": "GitHub Pages", "cls": "waiting"}]
     }
   ],
   "scheduled": [],
@@ -38,14 +32,10 @@
   ],
   "needs-tom": [
     {
-      "title": "🏷️ Loga SPORT ALIVE, SUBTERRA, ČESKÝ FLORBAL",
-      "desc": "Nové verze log — čekám na soubory",
-      "tags": [{"text": "loga", "cls": "waiting"}]
-    },
-    {
-      "title": "📸 Vysílejto.cz — fotky z Google Drive",
-      "desc": "Davidovi fotky — čekám na přístup",
-      "tags": [{"text": "fotky", "cls": "waiting"}]
+      "title": "🌐 Vysílejto web — dokončit a nasadit",
+      "desc": "Co potřebuji:\n• Loga SPORT ALIVE, SUBTERRA, ČESKÝ FLORBAL (nové verze)\n• Fotky z Google Drive (https://drive.google.com/drive/folders/1Xl_MowgcvuKrUPk56ZEpMYTg0S1Oyq7p)\n• Spustit GitHub Pages na branchi david-zmeny-2908-v2",
+      "time": "Branch: david-zmeny-2908-v2",
+      "tags": [{"text": "loga", "cls": "waiting"}, {"text": "fotky", "cls": "waiting"}, {"text": "GitHub Pages", "cls": "waiting"}]
     }
   ],
   "done": [
