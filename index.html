@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ája de Hermes — Task Board</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+      color: #c9d1d9;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .header h1 {
+      font-size: 2rem;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff, #f78166);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header .subtitle {
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+    
+    .header .last-update {
+      color: #58a6ff;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    
+    .board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    
+    .column {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 400px;
+    }
+    
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid;
+    }
+    
+    .column:nth-child(1) .column-header { border-color: #58a6ff; }
+    .column:nth-child(2) .column-header { border-color: #bc8cff; }
+    .column:nth-child(3) .column-header { border-color: #f78166; }
+    .column:nth-child(4) .column-header { border-color: #d29922; }
+    .column:nth-child(5) .column-header { border-color: #f85149; }
+    .column:nth-child(6) .column-header { border-color: #3fb950; }
+    .column:nth-child(7) .column-header { border-color: #6e7681; }
+    
+    .column-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .column-count {
+      background: #30363d;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      color: #8b949e;
+    }
+    
+    .task {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    
+    .task:hover {
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .task-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .task-desc {
+      font-size: 0.8rem;
+      color: #8b949e;
+      line-height: 1.4;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, margin 0.3s ease;
+    }
+    
+    .task.expanded .task-desc {
+      max-height: 500px;
+      margin-top: 0.5rem;
+    }
+    
+    .task.expanded {
+      border-color: #58a6ff;
+    }
+    
+    .task-meta {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+    }
+    
+    .task-tag {
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #30363d;
+      color: #c9d1d9;
+    }
+    
+    .task-tag.urgent { background: #f85149; color: white; }
+    .task-tag.done { background: #3fb950; color: white; }
+    .task-tag.waiting { background: #d29922; color: white; }
+    
+    .task-time {
+      color: #58a6ff;
+      font-size: 0.7rem;
+      margin-top: 0.25rem;
+    }
+    
+    .empty {
+      color: #484f58;
+      font-style: italic;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    .refresh-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #238636;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    
+    .refresh-btn:hover {
+      background: #2ea043;
+      transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+      .board { grid-template-columns: 1fr; }
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🤖 Ája de Hermes — Task Board</h1>
+    <div class="subtitle">Přehled úkolů a jejich stavu</div>
+    <div class="last-update" id="lastUpdate"></div>
+  </div>
+  
+  <div class="board" id="board">
+    <!-- Columns rendered by JS -->
+  </div>
+  
+  <button class="refresh-btn" onclick="loadTasks()">🔄 Aktualizovat</button>
+  
+  <script>
+    const COLUMNS = [
+      { id: 'assigned', title: '📋 Assigned', tasks: [] },
+      { id: 'scheduled', title: '📅 Scheduled', tasks: [] },
+      { id: 'working', title: '⚡ Working On', tasks: [] },
+      { id: 'check', title: '🔍 To Check', tasks: [] },
+      { id: 'needs-tom', title: '🙋 Needs Tom', tasks: [] },
+      { id: 'done', title: '✅ Done', tasks: [] },
+      { id: 'archive', title: '📦 Archive', tasks: [] }
+    ];
+    
+    let tasks = {};
+    
+    async function loadTasks() {
+      try {
+        const resp = await fetch('tasks.json?t=' + Date.now());
+        tasks = await resp.json();
+        renderBoard();
+        document.getElementById('lastUpdate').textContent = 
+          'Poslední aktualizace: ' + new Date().toLocaleString('cs-CZ');
+      } catch (e) {
+        document.getElementById('lastUpdate').textContent = 'Chyba načtení: ' + e.message;
+      }
+    }
+    
+    function renderBoard() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      
+      COLUMNS.forEach(col => {
+        const colTasks = tasks[col.id] || [];
+        const column = document.createElement('div');
+        column.className = 'column';
+        
+        let tasksHtml = '';
+        if (colTasks.length === 0) {
+          tasksHtml = '<div class="empty">Nic tu není</div>';
+        } else {
+          colTasks.forEach(task => {
+            const tags = (task.tags || []).map(t => 
+              `<span class="task-tag ${t.cls || ''}">${t.text}</span>`
+            ).join('');
+            
+            tasksHtml += `
+              <div class="task" onclick="this.classList.toggle('expanded')">
+                <div class="task-title">${task.title}</div>
+                ${task.desc ? `<div class="task-desc">${task.desc}</div>` : ''}
+                ${task.time ? `<div class="task-time">🕐 ${task.time}</div>` : ''}
+                ${tags ? `<div class="task-meta">${tags}</div>` : ''}
+              </div>
+            `;
+          });
+        }
+        
+        column.innerHTML = `
+          <div class="column-header">
+            <span class="column-title">${col.title}</span>
+            <span class="column-count">${colTasks.length}</span>
+          </div>
+          ${tasksHtml}
+        `;
+        
+        board.appendChild(column);
+      });
+    }
+    
+    loadTasks();
+    setInterval(loadTasks, 30000); // auto-refresh every 30s
+  </script>
+</body>
+</html>
